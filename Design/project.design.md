@@ -28,6 +28,12 @@ To be the most performant and efficient data access ORM to support the data dema
     - Relationships to other ReferenceEntities
     - Versioning and auditability
     - Localization and hierarchical structures
+
+    #### ORM Behavior
+    - Caching will be configured at model creation.
+    - explicit behavior is no caching, but is configurable using a retriever that implements a IDataRetriever<TEntity> interface
+    - when cached the data can expire and be removed from memory
+      - though the retriever should stamp when the data is used and extend the period of validity
  
     #### Relationship Types
     ReferenceEntities typically participate in many-to-one relationships, serving as lookup tables for domain entities. However, in advanced scenarios, they may also facilitate one-to-one mappings between two domain entities—especially when a shared classification or metadata is required to enforce consistency.
