@@ -1,6 +1,6 @@
 # SubLight.Abstraction
   ## Overview
-  SubLight.Abstraction is the core of the architecture. It defines the contracts, interfaces, and shared concepts that other libraries rely on, enabling loose coupling, clear boundaries, and easy substitution of implementations.
+  SubLight.Abstraction is the glue of the architecture. It defines the contracts, interfaces, and shared concepts that other libraries rely on, enabling loose coupling, clear boundaries, and easy substitution of implementations.
   ## Responsibilities
   - **Defines the common language**
     All other libraries — Core, DataAccess, Domain, Extensions — speak through the abstractions here. This prevents tight coupling and lets you swap implementations without breaking the rest of the system.
