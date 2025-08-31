@@ -19,7 +19,9 @@ To be the most performant and efficient data access ORM to support the data dema
   ## Terms
 
     ### Reference Entity
-    Is a table that contains static or semi-static data used to enforce consistency and reduce redundancy.
+    A ReferenceEntity represents reusable, non-volatile data structures that support normalization, validation, and metadata-driven modeling. These entities typically contain static or semi-static datasets—such as countries, currencies, or status codes—that are referenced across multiple domain models.
+  
+    ReferenceEntities differ from regular Entities in that they are often read-heavy, centrally managed, and designed for reuse. They may support metadata, relationships to other ReferenceEntities, and localization.
 
     - Enumerated data sets
     - Dynamic fields and metadata
@@ -27,11 +29,14 @@ To be the most performant and efficient data access ORM to support the data dema
     - Versioning and auditability
     - Localization and hierarchical structures
  
-    Examples include:
+    #### Relationship Types
+    ReferenceEntities typically participate in many-to-one relationships, serving as lookup tables for domain entities. However, in advanced scenarios, they may also facilitate one-to-one mappings between two domain entities—especially when a shared classification or metadata is required to enforce consistency.
+ 
+    #### Examples include
     - Country, Currency, StatusCode
     - Role, PermissionType, DocumentCategory
  
-    Code Examples:
+    #### Code Examples:
     - a workflow status usualy with pending, in progress, complete.
         ``` C#
           public enum WorkFlowStatus
