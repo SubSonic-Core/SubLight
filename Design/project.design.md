@@ -183,10 +183,17 @@ To be the most performant and efficient data access ORM to support the data dema
   - unknown
 # SubLight.Providers
 - SubLight providers are responsible for all implementation for interacting with a database
-  - Database Change Script creation optimised atomic bulk data manipulation
+  - Database Change Script creation
+    - optimized for bulk data manipulation
   - Expression Query Builder Translation
   
   ## SubLight.Providers.SqlServer
+  - Schema Generation
+    - Entities
+      - generate table to store data
+      - generate user defined table type to support bulk data streaming
+    - Reference Entities
+      - generate table to store data
   - Dependencies
     - SubLight.Abstraction
     - Microsoft.Data.SqlClient
