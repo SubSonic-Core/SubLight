@@ -4,10 +4,7 @@ To be the most performant and efficient data access ORM to support the data dema
 ```
 - entity caching will be managed based on the needs of each entity.
   - In Memory Change Tracking will not be implemented in this ORM
-    - It is wasteful to track changes on all entities from cradle to grave and results potential stale data across multiple systems.
-- Terms:
-  - Data Entity:
-    - Is a table that contains data that can be selected, updated and deleted        
+    - It is wasteful to track changes on all entities from cradle to grave and results potential stale data across multiple systems.    
 - use of database connection pools
   - a connection, reserved by a thread on demand and released back to the pool when no longer needed.
   - when the focus passes to another thread via asynchronous call a connection not in use will be allocated.
