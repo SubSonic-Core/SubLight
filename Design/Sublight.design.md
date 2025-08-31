@@ -177,7 +177,7 @@ To be the most performant and efficient data access ORM to support the data dema
   - Expression Query Building
 - Dependencies
   - SubLight.Abstraction
-# [SubLight.Abstraction](SubLight.Abstraction.md)  
+# [SubLight.Abstraction](SubLight.Abstraction.design.md)  
 # SubLight.Providers
 - SubLight providers are responsible for all implementation for interacting with a database
   - Database Change Script creation
