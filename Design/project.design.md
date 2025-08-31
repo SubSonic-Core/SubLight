@@ -174,6 +174,7 @@ To be the most performant and efficient data access ORM to support the data dema
 # SubLight
 - ORM core functionality
   - Data Model Creation
+  - Expression Query Building
 - Dependencies
   - SubLight.Abstraction
 # SubLight.Abstraction
@@ -182,9 +183,8 @@ To be the most performant and efficient data access ORM to support the data dema
   - unknown
 # SubLight.Providers
 - SubLight providers are responsible for all implementation for interacting with a database
-  - script generation
-    - schema change scripts
-    - expression tree that will translate expressions to a script that can be passed through to the database implemented by the provider
+  - Database Change Script creation optimised atomic bulk data manipulation
+  - Expression Query Builder Translation
   
   ## SubLight.Providers.SqlServer
   - Dependencies
