@@ -6,3 +6,7 @@
 	path = SubLight.Providers.SqlServer
 	url = https://github.com/SubSonic-Core/SubLight.Providers.SqlServer.git
 	branch = main
+[submodule "SubLight.Core"]
+	path = SubLight.Core
+	url = https://github.com/SubSonic-Core/SubLight.Core.git
+	branch = main
