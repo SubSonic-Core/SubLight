@@ -18,14 +18,17 @@ To be the most performant and efficient data access ORM to support the data dema
 # SubLight
 - ORM core functionality
   - Data Model Creation
-  
+- Dependencies
+  - SubLight.Abstraction
 # SubLight.Abstraction
 - abstraction layer where all the interfaces and common implementation between the main library and the providers
+- Dependencies
+  - unknown
 # SubLight.Providers
 - SubLight providers are responsible for all implementation for interacting with a database
   - script generation
     - schema change scripts
     - expression tree that will translate expressions to a script that can be passed through to the database implemented by the provider
-    - 
-  - 
+  - Dependencies
+  - SubLight.Abstraction
   ## SqlServer
