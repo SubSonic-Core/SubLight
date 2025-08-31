@@ -15,6 +15,25 @@ To be the most performant and efficient data access ORM to support the data dema
       - look up table that has a key and value
     - example of use case: 
       - reference table that maps a .net enum
+        - a workflow status usualy with pending, in progress, complete.
+          ``` C#
+          public enum WorkFlowStatus
+          {
+            UNKNOWN = 0,
+            Pending = 1,
+            InProgress = 2,
+            Complete = 3
+          }
+          ```
+          would map to a table:
+          ``` SQL
+          CREATE TABLE dbo.WorkFlowStatus
+          (
+            [WorkFlowStatusId] INT PRIMARY KEY,
+            [Name] VARCHAR(50) NOT NULL,
+            [Description] VARCHAR(MAX) NULL
+          )
+          ```
 - use of database connection pools
   - a connection, reserved by a thread on demand and released back to the pool when no longer needed.
   - when the focus passes to another thread via asynchronous call a connection not in use will be allocated.
