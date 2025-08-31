@@ -2,3 +2,7 @@
 	path = SubLight.Abstractions
 	url = https://github.com/SubSonic-Core/SubLight.Abstractions.git
 	branch = main
+[submodule "SubLight.Providers.SqlServer"]
+	path = SubLight.Providers.SqlServer
+	url = https://github.com/SubSonic-Core/SubLight.Providers.SqlServer.git
+	branch = main
