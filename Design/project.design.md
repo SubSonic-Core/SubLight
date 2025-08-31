@@ -29,6 +29,8 @@ To be the most performant and efficient data access ORM to support the data dema
   - script generation
     - schema change scripts
     - expression tree that will translate expressions to a script that can be passed through to the database implemented by the provider
+  
+  ## SubLight.Providers.SqlServer
   - Dependencies
-  - SubLight.Abstraction
-  ## SqlServer
+    - SubLight.Abstraction
+    - Microsoft.Data.SqlClient
