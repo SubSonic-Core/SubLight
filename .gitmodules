@@ -1,0 +1,4 @@
+[submodule "SubLight.Abstractions"]
+	path = SubLight.Abstractions
+	url = https://github.com/SubSonic-Core/SubLight.Abstractions.git
+	branch = main
