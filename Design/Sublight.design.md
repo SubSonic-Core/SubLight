@@ -160,7 +160,7 @@ To be the most performant and efficient data access ORM to support the data dema
         )
       ```
 # Features
-## 🧩 SubSonic.Core vs Provider Responsibilities
+## 🧩 SubLight.Core vs Provider Responsibilities
 
 | Feature Category | Implement in `SubSonic.Core` | Implement in Provider |
 |------------------|------------------------------|-----------------------|
@@ -174,6 +174,7 @@ To be the most performant and efficient data access ORM to support the data dema
 | **Async APIs** | Expose async methods in Core (`OpenAsync`, `ExecuteReaderAsync`) | Provider’s async implementation and cancellation token support |
 | **Error Handling** | Normalize exceptions to Core’s error model (wrap `DbException`) | Populate provider‑specific error codes, SQL state, and diagnostic info |
 | **Provider Factory** | Use `DbProviderFactory` in Core to create connections/commands generically | Register provider factory and invariant name; ensure it’s discoverable |
+
 
 # Architecture
 ## [SubLight.Core](SubLight.Core.design.md)
