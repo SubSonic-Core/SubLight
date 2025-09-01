@@ -171,26 +171,12 @@ To be the most performant and efficient data access ORM to support the data dema
             [Description] VARCHAR(MAX) NULL
           )
         ```
-# SubLight
-- ORM core functionality
-  - Data Model Creation
-  - Expression Query Building
-- Dependencies
-  - SubLight.Abstraction
-# [SubLight.Abstraction](SubLight.Abstraction.design.md)  
-# SubLight.Providers
-- SubLight providers are responsible for all implementation for interacting with a database
-  - Database Change Script creation
-    - optimized for bulk data manipulation
-  - Expression Query Builder Translation
-  
-  ## SubLight.Providers.SqlServer
-  - Schema Generation
-    - Entities
-      - generate table to store data
-      - generate user defined table type to support bulk data streaming
-    - Reference Entities
-      - generate table to store data
-  - Dependencies
-    - SubLight.Abstraction
-    - Microsoft.Data.SqlClient
+# Architecture
+## [SubLight.Core](SubLight.Core.design.md)
+## [SubLight.Abstraction](SubLight.Abstraction.design.md)  
+## SubLight.Providers
+SubLight Providers Are implementations of the SubLight.Abstraction library. Each provider is optimized for a specific database engine or storage mechanism, implementing the necessary interfaces and contracts defined in the abstraction layer.
+- Database Change Script creation
+- optimized for bulk data manipulation
+- Expression Query Builder Translation
+    - ### [SubLight.Providers.SqlServer](SubLight.Providers.SqlServer.design.md)
