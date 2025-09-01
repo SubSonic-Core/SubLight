@@ -179,8 +179,10 @@ To be the most performant and efficient data access ORM to support the data dema
 ## [SubLight.Core](SubLight.Core.design.md)
 ## [SubLight.Abstraction](SubLight.Abstraction.design.md)  
 ## SubLight.Providers
-SubLight Providers Are implementations of the SubLight.Abstraction library. Each provider is optimized for a specific database engine or storage mechanism, implementing the necessary interfaces and contracts defined in the abstraction layer.
-- Database Change Script creation
-- optimized for bulk data manipulation
-- Expression Query Builder Translation
+SubLight Providers, define how to talk to the actual backend, including quirks, type mappings and provider specific features
+
+The following resposibilites apply to all providers:
+- Using migration up/down strategy generate provider specific change scripts.
+- parameterized queries are optimized to be efficient and performant with the least amount of overhead allowed.
+- Translate query expressions into provider specific queries.
     - ### [SubLight.Providers.SqlServer](SubLight.Providers.SqlServer.design.md)
