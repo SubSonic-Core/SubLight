@@ -10,3 +10,6 @@
 	path = SubLight.Core
 	url = https://github.com/SubSonic-Core/SubLight.Core.git
 	branch = main
+[submodule "SubLight.Sql.Core"]
+	path = SubLight.Sql.Core
+	url = git@github.com:SubSonic-Core/SubLight.Sql.Core.git
