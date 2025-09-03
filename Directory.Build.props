@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <!-- Target .NET 8 across all projects -->
+    <TargetFramework>net8.0</TargetFramework>
+
+    <!-- Turn on nullable-reference-type analysis -->
+    <Nullable>enable</Nullable>
+
+    <!-- Bring in common framework usings automatically -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Always use latest C# features -->
+    <LangVersion>latest</LangVersion>
+
+    <!-- Optional: Standardize code analysis rules -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>
+  </PropertyGroup>
+</Project>
