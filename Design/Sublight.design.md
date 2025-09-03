@@ -185,8 +185,8 @@ SubLight Providers, define how to talk to the actual backend, including quirks, 
 The following resposibilites apply to all providers:
 - Using migration up/down strategy generate provider specific change scripts.
 - parameterized queries are optimized to be efficient and performant with the least amount of overhead allowed.
-- Translate query expressions into provider specific queries.
-    - different providers have different capabilities, and the query translator must be aware of these differences.
-    - not every provider supports SQL natively, some providers used NoSQL or other storage mechanisms.
+- IQueryResult and IQueryTranslator are implemented to support the provider specific dialect.
+- Sql Providers will have a Sql Core that implements the common sql features across all sql providers.
+    - ### [SubLight.Sql.Core](SubLight.Sql.Core.design.md)
 - list of providers:
     - ### [SubLight.Providers.SqlServer](SubLight.Providers.SqlServer.design.md)

@@ -4,14 +4,6 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Core", "SubLight.Core\SubLight.Core.csproj", "{58ED6CD2-3E23-0DE8-C26C-CE82B3E06D92}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		Design\SubLight.Abstraction.design.md = Design\SubLight.Abstraction.design.md
-		Design\SubLight.Core.design.md = Design\SubLight.Core.design.md
-		Design\Sublight.design.md = Design\Sublight.design.md
-		Design\SubLight.Providers.SqlServer.design.md = Design\SubLight.Providers.SqlServer.design.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Abstraction", "SubLight.Abstractions\SubLight.Abstraction.csproj", "{B77CD790-C5CB-37D3-5922-E38F12CD58BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Providers.SqlServer", "SubLight.Providers.SqlServer\SubLight.Providers.SqlServer.csproj", "{B06211FD-2548-C178-6508-2AC30AFFFBCA}"
