@@ -162,7 +162,7 @@ To be the most performant and efficient data access ORM to support the data dema
 # Features
 ## 🧩 SubLight.Core vs Provider Responsibilities
 
-| Feature Category | Implement in `SubSonic.Core` | Implement in Provider |
+| Feature Category | Implement in `SubLight.Core` | Implement in Provider |
 |------------------|------------------------------|-----------------------|
 | **Core Connection Lifecycle** | Abstract connection handling via `DbConnection` base class; open/close orchestration; disposal patterns | Actual connection creation and pooling behavior (provider’s `DbConnection` subclass) |
 | **Command Execution** | Unified API for executing commands (`ExecuteReader`, `ExecuteScalar`, `ExecuteNonQuery`) against `DbCommand` | Provider‑specific SQL dialect quirks, multiple result set support (e.g., MARS) |
@@ -186,4 +186,7 @@ The following resposibilites apply to all providers:
 - Using migration up/down strategy generate provider specific change scripts.
 - parameterized queries are optimized to be efficient and performant with the least amount of overhead allowed.
 - Translate query expressions into provider specific queries.
+    - different providers have different capabilities, and the query translator must be aware of these differences.
+    - not every provider supports SQL natively, some providers used NoSQL or other storage mechanisms.
+- list of providers:
     - ### [SubLight.Providers.SqlServer](SubLight.Providers.SqlServer.design.md)

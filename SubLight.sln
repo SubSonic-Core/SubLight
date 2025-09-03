@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{02EA68
 		Design\SubLight.Abstraction.design.md = Design\SubLight.Abstraction.design.md
 		Design\SubLight.Core.design.md = Design\SubLight.Core.design.md
 		Design\Sublight.design.md = Design\Sublight.design.md
-		Design\SubLight.Providers.SqlServer.md = Design\SubLight.Providers.SqlServer.md
+		Design\SubLight.Providers.SqlServer.design.md = Design\SubLight.Providers.SqlServer.design.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Abstraction", "SubLight.Abstractions\SubLight.Abstraction.csproj", "{B77CD790-C5CB-37D3-5922-E38F12CD58BC}"
