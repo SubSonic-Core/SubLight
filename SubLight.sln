@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Net.Testing", "Sub
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI Test Integrations", "CI Test Integrations", "{D006A980-6081-4C04-A192-9AA8FD7D1E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Sql.Core", "SubLight.Sql.Core\SubLight.Sql.Core.csproj", "{F97EA1FD-425D-2969-8AF6-6EF03D84511C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubLight.Sql.Abstractions", "SubLight.Sql.Abstractions\SubLight.Sql.Abstractions.csproj", "{F97EA1FD-425D-2969-8AF6-6EF03D84511C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

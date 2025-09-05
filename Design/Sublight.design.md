@@ -187,6 +187,6 @@ The following resposibilites apply to all providers:
 - parameterized queries are optimized to be efficient and performant with the least amount of overhead allowed.
 - IQueryResult and IQueryTranslator are implemented to support the provider specific dialect.
 - Sql Providers will have a Sql Core that implements the common sql features across all sql providers.
-    - ### [SubLight.Sql.Core](SubLight.Sql.Core.design.md)
+    - ### [SubLight.Sql.Abstractions](SubLight.Sql.Abstractions.design.md)
 - list of providers:
     - ### [SubLight.Providers.SqlServer](SubLight.Providers.SqlServer.design.md)
