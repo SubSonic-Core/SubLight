@@ -10,3 +10,6 @@
 	path = SubLight.Core
 	url = https://github.com/SubSonic-Core/SubLight.Core.git
 	branch = main
+[submodule "SubLight.Sql.Abstractions"]
+	path = SubLight.Sql.Abstractions
+	url = git@github.com:SubSonic-Core/SubLight.Sql.Abstractions.git
