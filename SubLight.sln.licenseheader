@@ -1,4 +1,5 @@
-#region Copyright (c) 2025
+﻿extensions: .cs
+#region Copyright (c) %CreationYear%
 // RM / Hybrid ORM: Resource Manager / Hybrid ORM
 //
 // License: Dual-license
@@ -8,24 +9,8 @@
 // Disclaimer: Provided "as-is"; no warranty; author not liable for any damages, data loss, or business interruptions.
 // Production use must be fully tested and validated within the enterprise environment.
 //
-// Contributions: All contributions are voluntary and licensed under this project�s dual-license; may be included in commercial releases.
+// Contributions: All contributions are voluntary and licensed under this project’s dual-license; may be included in commercial releases.
 // See CLA.md for Contributor License Agreement.
 //
 // For commercial licensing or paid support inquiries: Kenneth Carter
 #endregion
-namespace SubLight.Net.Testing
-{
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
-    }
-}
