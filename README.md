@@ -9,4 +9,4 @@ Any requests for bug fixes, custom features, or modifications are **paid service
 **Contributions:**  
 All contributions are voluntary and licensed under the project license. Contributions may be included in commercial releases.  
 
-For commercial licensing or support inquiries, contact: [Link Text](mailto:kccarter32%40gmail.com?subject=RM%20/%20Hybrid%20Inquiry)
+For commercial licensing or support inquiries, contact: [Copyright Holder](mailto:kccarter32%40gmail.com?subject=RM%20/%20Hybrid%20ORM%20Inquiry)
