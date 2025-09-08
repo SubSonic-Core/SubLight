@@ -9,12 +9,7 @@
   </ItemGroup>
 
   <Target Name="BuildDocs" AfterTargets="Build" Condition="'$(RunDocFx)' == 'true'">
-    <Exec Command="docfx docfx.json" />
-  </Target>
-
-  <Target Name="GenerateDocs">
-    <Message Text="Generating documentation with DocFX..." Importance="high" />
-    <Exec Command="docfx docfx.json" WorkingDirectory="$(ProjectDir)" />
+    <Exec Command="cmd /c &quot;commands\generate-docs.bat&quot;" />
   </Target>
 
 </Project>

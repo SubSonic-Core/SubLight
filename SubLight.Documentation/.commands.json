@@ -1,0 +1,12 @@
+{
+  "commands": {
+    "generate-docs": {
+      "FileName": "docfx",
+      "Arguments": "docfx.json"
+    },
+    "serve-docs": {
+      "FileName": "docfx",
+      "Arguments": "docfx.json --serve"
+    }
+  }    
+}

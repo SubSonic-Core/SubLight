@@ -2,6 +2,13 @@
 
 This project hosts architectural notes, contributor onboarding, and API reference docs for SubLight.
 
+# Prerequisites
+- [.NET SDK](https://dotnet.microsoft.com/download) (version 6.0 or later)
+- DocFX CLI tool installed globally:
+  ```bash
+  dotnet tool install -g docfx
+  ```
+
 ## Build Docs
 
 To generate the documentation site:
