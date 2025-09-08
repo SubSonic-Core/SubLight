@@ -13,3 +13,6 @@
 [submodule "SubLight.Sql.Abstractions"]
 	path = SubLight.Sql.Abstractions
 	url = git@github.com:SubSonic-Core/SubLight.Sql.Abstractions.git
+[submodule "src/SubLight.Proxy.Generator"]
+	path = src/SubLight.Proxy.Generator
+	url = git@github.com:SubSonic-Core/SubLight.Proxy.Generator.git
