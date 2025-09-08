@@ -15,6 +15,23 @@ It provides:
 
 ## Core Concepts
 
+### 🔐 Access Intent and Telemetry
+
+SubLight supports declarative access control and telemetry escalation for regulated environments.
+
+- Entities may declare an AccessIntent to signal sensitivity, enforce access boundaries, and trigger audit or telemetry escalation when resolved.
+- AccessIntent declarations are enforced at the provider level.
+    - **Forbidden**: The provider must throw or fail fast—no resolution allowed.
+    - **Restricted**: The provider must log the access, trigger telemetry escalation, and optionally require justification or context.
+    - **Public**: Resolution proceeds normally, with optional lightweight telemetry. 
+- Telemetry sinks record access and escalate when protected data is resolved
+    - Record access event with metadata (who, when, what, why)
+    - Elevate telemetry level (e.g. trace, audit, alert)
+    - Optionally notify compliance or trigger review workflows.
+- Orchestration respects declared access boundaries to prevent accidental exposure  
+
+This enables SubLight to operate safely in environments governed by HIPAA, GDPR, or similar regulations—without compromising orchestration flexibility.
+
 ### 🧠 Enterprise Data Model
 
 SubLight orchestration relies on a shared enterprise data model to coordinate behavior across services and instances. This model defines the semantic boundaries and lifecycle intent of each entity, enabling predictable orchestration without ambient assumptions.
@@ -22,6 +39,7 @@ SubLight orchestration relies on a shared enterprise data model to coordinate be
 Entities must explicitly declare:
 
 - **Identity**: What constitutes a `DataKey` (e.g. single ID, composite key)
+- **Access Intent**: Sensitivity, access boundaries and trigger audit behavior.
 - **Persistence Intent**: Whether the entity is backed by a durable provider
 - **Cacheability**: Whether the entity supports envelope-based caching and resolution
 - **Envelope Metadata**: Versioning, timestamps, consistency hints
@@ -45,6 +63,7 @@ Providers interpret entity intent locally, but orchestration remains consistent 
 | Declaration | Enables | Interpreted By |
 |-------------|---------|----------------|
 | `DataKey` | Identity resolution | All providers |
+| Access intent | Access control + audit triggers | Providers + telemetry sinks |
 | Persistence intent | Provider orchestration | Durable stores |
 | Cacheability | Envelope resolution | Cache layers |
 | Envelope metadata | Consistency coordination | Cache + store providers |
@@ -95,6 +114,8 @@ A metadata wrapper that carries versioning, timestamps, and cache hints. Enables
 - **Explicitness**: All orchestration is opt-in and declarative.
 - **Extensibility**: Providers can be added without modifying core abstractions.
 - **Separation of Concerns**: Query logic, caching, and storage are cleanly decoupled.
+
+SubLight is designed to evolve. New orchestration behaviors, access policies, and provider types can be introduced without modifying core abstractions—preserving stability and extensibility.
 
 ### Comparison to Existing Systems
 SubLight draws inspiration from several established categories, but it combines their strengths into a unified, stateless orchestration layer. Here's how it compares:
