@@ -13,6 +13,8 @@ It provides:
 - A **cache-aware orchestration layer** that respects keys, envelopes, and bulk operations
 - A **stateless design** that scales horizontally and avoids fragile integrations
 
+---
+
 ## Core Concepts
 
 ### 🔐 Access Intent and Telemetry
@@ -40,7 +42,7 @@ Entities must explicitly declare:
 
 - **Identity**: What constitutes a `DataKey` (e.g. single ID, composite key)
 - **Access Intent**: Sensitivity, access boundaries and trigger audit behavior.
-- **Persistence Intent**: Persistant, Cachable, Ephemeral, Scoped 
+- **Persistence Intent**: Persistent, Cachable, Ephemeral, Scoped 
 - **Envelope Metadata**: Versioning, timestamps, consistency hints
 - **Query Surface**: Which LINQ expressions are supported and how they map to providers
 
@@ -77,16 +79,26 @@ SubLight exposes a unified query surface via LINQ. This allows developers to:
 - Resolve queries based on declared entity intent—respecting cacheability, persistence, and orchestration rules.
 - Maintain separation of concerns between orchestration and business logic.
 
-Example:
+#### 🔄 Navigation Property Resolution
 
-```csharp
-var activeUsers = await context.Users
-    .Where(u => u.IsActive)
-    .ToListAsync();
-```
-This query may resolve from in-memory cache, distributed cache, or a backing store—depending on envelope state and orchestration rules.
+SubLight supports navigation properties via Roslyn-generated proxies. These proxies allow entities to expose relationships (e.g. `Customer.Orders`) while preserving orchestration semantics.
 
+When a navigation property is marked as **Cachable**, resolution follows this flow:
 
+1. **Envelope Check**\
+   SubLight inspects the envelope metadata to determine if the navigation target is present and fresh.
+
+2. **Cache Lookup**\
+   If the envelope is stale or missing, SubLight queries the cache layer (e.g. Redis, HybridCache) using the declared `DataKey`.
+
+3. **Provider Fallback**\
+   If the cache miss occurs, SubLight delegates to the durable backend (SQL, NoSQL, or OData provider) to resolve the navigation target.
+   > 📘fallback behavior respects the declared `PersistenceIntent`. so ephemeral or scoped entities won’t trigger durable resolution.
+
+4. **Telemetry Trigger (if AccessIntent applies)**\
+   If the navigation target has `AccessIntent.Restricted`, telemetry sinks are notified and escalation may occur.
+
+---
 
 ## 🔧 Core Abstractions
 
@@ -151,6 +163,8 @@ Whether deployed via Docker, Kubernetes, or IIS, SubLight ensures:
 - Cache-aware coordination without tight coupling
 
 This flexibility makes SubLight ideal for hybrid environments—where some services run in containers, others behind IIS, and all need consistent access to shared data.
+
+---
 
 ## Why SubLight?
 SubLight exists to simplify what backend systems typically get wrong: coordinating data access, caching, and consistency across distributed services.
