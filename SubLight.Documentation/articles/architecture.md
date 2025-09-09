@@ -83,7 +83,7 @@ SubLight exposes a unified query surface via LINQ. This allows developers to:
 
 SubLight supports navigation properties via Roslyn-generated proxies. These proxies allow entities to expose relationships (e.g. `Customer.Orders`) while preserving orchestration semantics.
 
-When a navigation property is marked as **Cachable**, resolution follows this flow:
+When the entity targeted by a navigation property is marked as **Cachable**, resolution follows this flow:
 
 1. **Envelope Check**\
    SubLight inspects the envelope metadata to determine if the navigation target is present and fresh.
