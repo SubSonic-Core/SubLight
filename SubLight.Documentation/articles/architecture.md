@@ -1,6 +1,6 @@
 ﻿# SubLight Architecture
 
-SubLight is a hybrid resource orchestration layer that unifies data access, caching, and consistency across distributed services. It is not a traditional ORM, nor a cache manager, nor a service mesh—but it borrows from each to create a stateless, extensible framework for backend systems that demand clarity, composability, and scale.
+SubLight is a distributed object coordinator—a stateless orchestration framework that unifies identity, caching, access intent, and telemetry across SQL, NoSQL, and in-memory stores.
 
 ## Purpose
 
@@ -40,8 +40,7 @@ Entities must explicitly declare:
 
 - **Identity**: What constitutes a `DataKey` (e.g. single ID, composite key)
 - **Access Intent**: Sensitivity, access boundaries and trigger audit behavior.
-- **Persistence Intent**: Whether the entity is backed by a durable provider
-- **Cacheability**: Whether the entity supports envelope-based caching and resolution
+- **Persistence Intent**: Persistant, Cachable, Ephemeral, Scoped 
 - **Envelope Metadata**: Versioning, timestamps, consistency hints
 - **Query Surface**: Which LINQ expressions are supported and how they map to providers
 
@@ -75,7 +74,7 @@ SubLight exposes a unified query surface via LINQ. This allows developers to:
 
 - Filter, project, and join data without knowing the underlying store.
 - Compose queries that flow through cache, envelope resolution, and provider logic.
-- Resolves queries based on declared entity intent—respecting cacheability, persistence, and orchestration rules.
+- Resolve queries based on declared entity intent—respecting cacheability, persistence, and orchestration rules.
 - Maintain separation of concerns between orchestration and business logic.
 
 Example:
@@ -171,6 +170,16 @@ SubLight solves this by introducing a stateless orchestration layer that:
 - Enables bulk operations and key composition with minimal friction
 
 SubLight is leverage. It’s the architectural boundary that makes everything else simpler, clearer, and easier to maintain.
+
+## Contributor Summary
+
+SubLight orchestration is:
+
+- Declarative: Entities define orchestration behavior via explicit intent  
+- Stateless: No ambient context or shared memory assumptions  
+- Extensible: Providers, envelopes, and access policies evolve independently  
+- Compliant: AccessIntent and telemetry escalation support regulated environments  
+- Unified: LINQ queries coordinate across cache, store, and metadata layers  
 
 ## Next Steps
 
