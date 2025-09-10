@@ -1,0 +1,13 @@
+# Entire repo
+*       @kccarter76
+
+# Specific folder
+.github/    @kccarter76
+
+# Specific file
+LICENSE.dual.md  @kccarter76
+cla.md           @kccarter76 
+
+# File type
+*.md    @docs-team
+
