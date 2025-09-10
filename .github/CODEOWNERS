@@ -3,11 +3,12 @@
 
 # Specific folder
 .github/    @kccarter76
+SubLight.Documentation @SubSonic-Core/docs-team
 
 # Specific file
 LICENSE.dual.md  @kccarter76
 cla.md           @kccarter76 
 
 # File type
-*.md    @docs-team
+*.md    @SubSonic-Core/docs-team
 
