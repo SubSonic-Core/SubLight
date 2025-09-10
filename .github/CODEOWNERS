@@ -3,7 +3,7 @@
 
 # Specific folder
 .github/    @kccarter76
-SubLight.Documentation @SubSonic-Core/docs-team
+SubLight.Documentation/ @SubSonic-Core/docs-team
 
 # Specific file
 LICENSE.dual.md  @kccarter76
