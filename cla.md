@@ -18,7 +18,7 @@ By signing this agreement, you ("Contributor") grant the copyright holder:
 You agree that your contribution will be licensed under the **project’s dual-license model**:
 
 - **Educational / Non-Commercial Use**: Free  
-- **Commercial Use**: Paid per-service license
+- **Commercial Use**: Paid per-application license
 
 ---
 
