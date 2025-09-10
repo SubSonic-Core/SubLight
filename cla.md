@@ -1,7 +1,7 @@
-# Contributor License Agreement (CLA) for RM - Resource Manager / Hybrid ORM
+# Contributor License Agreement (CLA) for SubLight
 
 **Contributor:** [Your Name or Company]  
-**Project:** SubLight - Distributed Object Coordinator
+**Project:** SubLight
 **Date:** [Date]
 
 ---
