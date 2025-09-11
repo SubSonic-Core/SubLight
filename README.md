@@ -1,7 +1,7 @@
 ## Licensing
 
 This project is **open source for educational and non-commercial use**.  
-Commercial use requires a **paid per-service license**.
+Commercial use requires a **paid per-application license**.
 
 **Support and Customization:**  
 Any requests for bug fixes, custom features, or modifications are **paid services** under a separate support agreement.
