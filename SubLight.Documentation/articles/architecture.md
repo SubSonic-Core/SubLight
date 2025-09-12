@@ -211,6 +211,7 @@ Future optimization may include:
 This speculative model would preserve declarative semantics while improving transport efficiency—especially for cacheable, telemetry-sensitive entities.
 
 </details>
+
 ---
 
 ## 🔧 Core Abstractions
