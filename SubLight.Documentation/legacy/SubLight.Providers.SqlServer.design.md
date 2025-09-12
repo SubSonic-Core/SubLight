@@ -1,3 +1,12 @@
+<!--
+Copyright © 2025 Kenneth Carter
+
+This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
+- Free for educational, research, personal, or nonprofit use
+- Commercial use requires a paid license
+
+See LICENSE.dual.md for full terms.
+-->
 # SubLight.Providers.SqlServer
 ## Overview
   SubLight.Providers.SqlServer is a specialized library that implements the data access layer for SQL Server databases. It leverages the contracts and abstractions defined in SubLight.Abstraction to provide a robust, efficient, and scalable way to interact with SQL Server, handling everything from connection management to query execution.

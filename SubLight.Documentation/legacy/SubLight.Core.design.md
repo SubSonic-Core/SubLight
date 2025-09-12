@@ -1,3 +1,12 @@
+<!--
+Copyright © 2025 Kenneth Carter
+
+This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
+- Free for educational, research, personal, or nonprofit use
+- Commercial use requires a paid license
+
+See LICENSE.dual.md for full terms.
+-->
 # SubLight.Core
 ## Overview
 SubLight.Core is the heart of the architecture. It contains the fundamental building blocks, base classes, and shared utilities that other libraries extend and build upon. It provides a solid foundation for domain logic, data access, and application services.

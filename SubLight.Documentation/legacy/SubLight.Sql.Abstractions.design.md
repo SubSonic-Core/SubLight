@@ -1,3 +1,12 @@
+<!--
+Copyright © 2025 Kenneth Carter
+
+This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
+- Free for educational, research, personal, or nonprofit use
+- Commercial use requires a paid license
+
+See LICENSE.dual.md for full terms.
+-->
 # SubLight.Sql.Core
 ## Overview
   SubLight.Sql.Abstractions is a foundational library within the SubLight ecosystem that provides essential abstractions and interfaces for interacting with SQL databases. It is designed to facilitate database operations in a provider-agnostic manner, allowing developers to work with various SQL database systems seamlessly.
