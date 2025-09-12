@@ -30,12 +30,13 @@ It provides:
 
 ### 📘 Table of Contents
 
-* [Access Intent and Telemetry](#access-intent-and-telemetry)
-* [Orchestration Data Model (Enterprise Perspective)](#orchestration-data-model-enterprise-perspective)
-* [Navigation Property Resolution](#navigation-property-resolution)
-* [Distributed Change Tracking (Exploratory Notes)](#distributed-change-tracking-exploratory-notes)
-* [Service Ownership and Model Shifting](#service-ownership-and-model-shifting)
-* [Query Surface and Resolution Semantics](#query-surface-and-resolution-semantics)
+* [Access Intent and Telemetry](#-access-intent-and-telemetry)
+* [Orchestration Data Model (Enterprise Perspective)](#-orchestration-data-model-enterprise-perspective)
+* [Navigation Property Resolution](#-navigation-property-resolution)
+* [Distributed Change Tracking (Exploratory Notes)](#-distributed-change-tracking-exploratory-notes)
+* [Service Ownership and Model Shifting](#-service-ownership-and-model-shifting)
+* [Query Surface and Resolution Semantics](#-query-surface-and-resolution-semantics)
+* [Speculative Transport Optimization](#-speculative-transport-optimization)
 
 ---
 
