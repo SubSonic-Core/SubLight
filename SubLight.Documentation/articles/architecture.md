@@ -1,4 +1,13 @@
-﻿# SubLight Architecture
+﻿<!--
+Copyright © 2025 Kenneth Carter
+
+This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
+- Free for educational, research, personal, or nonprofit use
+- Commercial use requires a paid license
+
+See LICENSE.dual.md for full terms.
+-->
+# SubLight Architecture
 
 SubLight is a distributed object coordinator—a stateless orchestration framework that unifies identity, caching, access intent, and telemetry across SQL, NoSQL, and in-memory stores.
 
