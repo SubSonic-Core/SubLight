@@ -2,8 +2,11 @@
   href: index.md
   homepage: index.md
 
-- name: Architecture Overview
-  href: articles/architecture.md
+- name: Architecture Core Concepts
+  href: articles/core-concepts.md
+
+- name: Core Abstractions
+  href: articles/ccore-abstraction.md
 
 - name: Keys and Envelopes
   href: articles/keys-and-envelopes.md
