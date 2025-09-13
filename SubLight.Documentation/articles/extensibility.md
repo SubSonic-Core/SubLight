@@ -7,6 +7,55 @@ This documentation is part of the Distributed Object Coordinator (DOC Library) a
 
 See LICENSE.dual.md for full terms.
 -->
+# SubLight Extensibility Guidelines
+
+## Purpose
+Defines how external providers, contributors, and orchestration surfaces can extend SubLight safely and predictably.
+
+---
+
+## Provider Interface Contracts
+
+* `ISubLightQueryProvider` — Accepts expression trees and executes them against local context  
+* `IEnvelopeAuthority` — Governs metadata resolution and change tracking  
+* `ITelemetrySink` — Streams access events and escalation triggers
+
+---
+
+## Expression Delegation Patterns
+
+* How SubLight serializes LINQ segments for gRPC transport  
+* Validating and executing expression trees safely  
+* Mapping upstream query intent to local provider context
+
+---
+
+## Compliance Hooks
+
+* AccessIntent enforcement  
+* Telemetry escalation  
+* Mutation boundaries and audit triggers
+
+---
+
+## Contributor Extension Points
+
+* Adding new providers  
+* Extending envelope metadata  
+* Registering telemetry sinks  
+* Declaring new orchestration behaviors
+
+---
+
+## Testing and Validation
+
+* Provider compliance checklist  
+* Expression tree safety tests  
+* Envelope resolution scenarios  
+* Telemetry sink verification
+
+---
+
 ## Proxy Generation and Navigation
 
 ### 🧠 Contributor Notes
