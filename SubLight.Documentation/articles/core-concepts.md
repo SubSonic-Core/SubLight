@@ -151,7 +151,7 @@ This ensures that orchestration contracts respect enterprise boundaries and prev
 
 SubLight supports navigation properties via Roslyn-generated proxies. These proxies allow entities to expose relationships (e.g. `Customer.Orders`) while preserving orchestration semantics.
 
-When the entity targeted by a navigation property is marked as **Cachable**, resolution follows this flow:
+When the entity targeted by a navigation property is marked as **Cacheable**, resolution follows this flow:
 
 1. **Envelope Check** — Inspect envelope metadata for freshness  
 2. **Cache Lookup** — Query distributed cache using declared `DataKey`  
@@ -171,7 +171,7 @@ When the entity targeted by a navigation property is marked as **Cachable**, res
 SubLight recognizes the architectural value of distributed change tracking—especially in cacheable, mutation-prone entities. While not fully implemented in version 1, the following concepts are under active consideration:
 
 * **Mutation Intent Signaling** When a user accesses an entity with intent to modify, orchestration may capture this as a declarative signal—externalized via envelope metadata  
-* **Dirty State Coordination** For entities marked `PersistenceIntent.Cachable`, SubLight may flag the record as **dirty**—indicating that resolution should be deferred until changes are committed or rolled back  
+* **Dirty State Coordination** For entity declarations with `Orchestration Behavior: Cacheable`, SubLight may flag the record as **dirty**—indicating that resolution should be deferred until changes are committed or rolled back  
 * **Deferred Resolution Behavior** Consumers attempting to resolve a dirty entity may receive stale data, a deferred response, or a fail-fast signal depending on orchestration policy  
 * **Commit/Rollback Semantics** Coordinating distributed commits and rollbacks remains an open question. SubLight does not yet implement transaction orchestration across services or providers
 
@@ -340,7 +340,7 @@ SubLight orchestration is:
 
 To explore SubLight’s abstractions and contributor workflows:
 
-* [Core Abstractions](core-abstraction.md)
+* [Core Abstractions](core-abstractions.md)
 * [Keys and Envelopes](keys-and-envelopes.md)
 * [Bulk Operations](bulk-operations.md)
 * [Extensibility Guidelines](extensibility.md)
