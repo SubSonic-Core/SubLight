@@ -1,3 +1,5 @@
+ <!-- SPDX-License-Identifier: LicenseRef-DOC-Edu OR LicenseRef-DOC-Commercial -->
+
 ## 📜 Distributed Object Coordinator — Dual License for Educational and Commercial Use
 
 **Copyright © 2025 Kenneth Carter**
@@ -41,6 +43,8 @@ Licensing is **per application**, where an "application" is defined as any deplo
 > For hosted services—including load-balanced web servers, containerized deployments, and Kubernetes environments—there is **no limit** on the number of instances per licensed application.  
 > However, for desktop applications, licensing may be enforced on a **per-seat** basis, where each end-user installation requires a separate license.  
 > Site licenses may be available for organizations seeking broader deployment terms.
+
+Licenses may be issued as subscription-based, with a defined period of validity and renewal terms.
 
 Contact the copyright holder to acquire a commercial license.
 

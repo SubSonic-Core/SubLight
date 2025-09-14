@@ -1,27 +1,34 @@
 ﻿extensions: .cs
 #region Copyright (c) %CreationYear%
-// DOC: Distributed Object Coordinator
-//
-// License: Dual-license
-//  - Free for educational, research, personal, or nonprofit projects that are not directly or indirectly used to generate revenue
-//  - Commercial use requires a per-service paid license
-//
-// Disclaimer: Provided "as-is"; no warranty; author not liable for any damages, data loss, or business interruptions.
-// Production use must be fully tested and validated within the enterprise environment.
-//
-// Contributions: All contributions are voluntary and licensed under this project’s dual-license; may be included in commercial releases.
-// See CLA.md for Contributor License Agreement.
-//
-// For commercial licensing or paid support inquiries: Kenneth Carter
+/* DOC: Distributed Object Coordinator
+
+ License: Dual-license
+  - Free for educational, research, personal, or nonprofit projects that are not directly or indirectly used to generate revenue
+  - Commercial use requires a per-service paid license
+
+ Disclaimer: Provided "as-is"; no warranty; author not liable for any damages, data loss, or business interruptions.
+ Production use must be fully tested and validated within the enterprise environment.
+
+ Contributions: All contributions are voluntary and licensed under this project’s dual-license; may be included in commercial releases.
+ See CLA.md for Contributor License Agreement.
+
+ For commercial licensing or paid support inquiries: Kenneth Carter
+
+ See [LICENSE.md](https://github.com/SubSonic-Core/SubLight/blob/main/LICENSE.md) for full terms.
+ 
+ Last updated: %CurrentMonth%/%CurrentDay%/%CurrentYear% %CurrentTime%
+*/
 #endregion
 
 extensions: .md
 <!--
-Copyright © 2025 Kenneth Carter
+Copyright © %CreationYear% Kenneth Carter
 
 This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
 - Free for educational, research, personal, or nonprofit use
 - Commercial use requires a paid license
 
-See LICENSE.dual.md for full terms.
+See [LICENSE.md](https://github.com/SubSonic-Core/SubLight/blob/main/LICENSE.md) for full terms.
+
+Last updated: %CurrentMonth%/%CurrentDay%/%CurrentYear% %CurrentTime%
 -->

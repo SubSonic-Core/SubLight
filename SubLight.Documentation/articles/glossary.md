@@ -1,12 +1,14 @@
-﻿<!-- Copyright © 2025 Kenneth Carter
+﻿<!--
+Copyright © 2025 Kenneth Carter
 
 This documentation is part of the Distributed Object Coordinator (DOC Library) and is licensed under the project's dual-license model:
+- Free for educational, research, personal, or nonprofit use
+- Commercial use requires a paid license
 
-* Free for educational, research, personal, or nonprofit use
-* Commercial use requires a paid license
+See [LICENSE.md](https://github.com/SubSonic-Core/SubLight/blob/main/LICENSE.md) for full terms.
 
-See [LICENSE.dual.md](https://LICENSE.dual.md) for full terms. -->
-
+Last updated: 9/13/2025 6:31 PM
+-->
 # 📘 SubLight Glossary
 
 This glossary defines key terms used throughout SubLight’s orchestration model. It is strictly limited to declarative definitions—what each concept *is*, not how it behaves. Contributors can use this glossary to understand terminology used in entity lifecycles, access semantics, and orchestration boundaries. Behavioral mechanics (like telemetry escalation or fallback coordination) are documented separately in onboarding and implementation guides.
