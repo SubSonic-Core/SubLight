@@ -23,8 +23,6 @@ Each authority is established with its canonical identity, semantic location, go
 
 Once a Service Authority is defined, its governed models become orchestration-aware. The context uses the runtime implementation of the authority to invoke `ApplyModelConfiguration`—a reflection-based extension that activates model configuration scoped to the service abstraction. See [ApplyModelConfiguration](#applymodelconfiguration) for details.
 
-After `OnCreateServiceAuthority` returns, orchestration must validate the resulting ODM. This includes checking for duplicate model configuration across authorities, mandate conflicts, and lifecycle flag inconsistencies. A validator anchored in the `OrchestrationDataContext` should analyze the ODM to ensure contributor clarity, governance integrity, and CI enforceability.
-
 ### **OnValidateServiceAuthority**
 
 This lifecycle hook is invoked by the `OrchestrationDataContext` after `OnCreateServiceAuthority` completes. It receives the fully constructed Orchestration Data Model (ODM) and performs validation to ensure governance integrity, contributor clarity, and CI enforceability.
