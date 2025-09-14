@@ -31,7 +31,7 @@ The validator checks for:
 
 * **Duplicate Configuration**: Ensures no two authorities configure the same POCO via `IEntityConfiguration<T>`
 * **Mandate Conflicts**: Validates declared access intent against denial-first constraints
-* **Lifecycle Flag Inconsistencies**: Detects misuse or overlap of lifecycle semantics across domains
+* **Lifecycle Flag Inconsistencies**: Detects misuse or overlap of lifecycle semantics across services
 * **Cross-Authority Intent Resolution**: Confirms that all declared access is valid and scoped
 
 Diagnostics emitted by this hook are contributor-facing and CI-ready. They include model type, authority name, mandate source, and validation context. Resolution guidance is out of scope for this document.
