@@ -17,38 +17,54 @@ Last updated: 9/14/2025 12:04 AM
 
 ### **OnCreateServiceAuthority**
 
-This lifecycle hook is defined and invoked by the `OrchestrationDataContext` during its bootstrap phase. It receives configuration options that include a modeled list of service names and their environment URIs, along with a builder that declaratively defines all Service Authorities.
+Invoked during the initial bootstrap phase. This hook receives configuration options including service names, environment URIs, and a builder for defining all Service Authorities.
 
-Each authority is established with its canonical identity, semantic location, governed models, and mandates. This hook represents the orchestration boundary map—where contributor expectations, domain ownership, and denial-first semantics are formalized.
+Each authority is established with its canonical identity, semantic location, governed models, and denial-first mandates. This marks the orchestration boundary—where contributor expectations and domain ownership are formalized.
 
-Once a Service Authority is defined, its governed models become orchestration-aware. The context uses the runtime implementation of the authority to invoke `ApplyModelConfiguration`—a reflection-based extension that activates model configuration scoped to the service abstraction. See [ApplyModelConfiguration](#applymodelconfiguration) for details.
+Once an authority is defined, its governed models become orchestration-aware. Model configuration is activated declaratively and scoped to the service abstraction.
+
+After creation, orchestration proceeds to validation.
+
+---
 
 ### **OnValidateServiceAuthority**
 
-This lifecycle hook is invoked by the `OrchestrationDataContext` after `OnCreateServiceAuthority` completes. It receives the fully constructed Orchestration Data Model (ODM) and performs validation to ensure governance integrity, contributor clarity, and CI enforceability.
+Invoked after creation, during bootstrap validation. This hook receives the fully constructed Orchestration Data Model (ODM) and performs internal consistency checks.
 
-The validator checks for:
+Validation includes:
 
-* **Duplicate Configuration**: Ensures no two authorities configure the same POCO via `IEntityConfiguration<T>`
-* **Mandate Conflicts**: Validates declared access intent against denial-first constraints
-* **Lifecycle Flag Inconsistencies**: Detects misuse or overlap of lifecycle semantics across services
-* **Cross-Authority Intent Resolution**: Confirms that all declared access is valid and scoped
+- Duplicate configuration across authorities
+- Lifecycle flag inconsistencies
+- Structural validity of declared access intent
 
-Diagnostics emitted by this hook are contributor-facing and CI-ready. They include model type, authority name, mandate source, and validation context. Resolution guidance is out of scope for this document.
+Diagnostics are contributor-facing and CI-ready. Mandate enforcement is deferred to delegation.
 
-This hook is the final gate before orchestration proceeds to proxy traversal and runtime activation.
+---
 
 ### **OnDelegateServiceAuthority**
 
+Invoked after validation, during delegation setup in bootstrap. This hook processes access declarations from services that consume models governed by other authorities.
+
+Each consuming service declares intent to access shared models. These declarations are resolved against denial-first mandates issued by the governing authority.
+
+Access delegation is explicit, CI-validatable, and scoped to orchestration contracts.
+
+> 🧮 **Access Mask Resolution**  
+> During delegation, declared access intent is resolved against governing mandates.  
+> If a service requests access that is partially denied, the resulting mask is pared down to what is explicitly allowed.  
+> Diagnostics are emitted only when the resolved mask is empty or violates lifecycle constraints.
+
+---
+
 ### **ApplyModelConfiguration**
 
-`ApplyModelConfiguration` is not a lifecycle hook in the orchestration context itself. Instead, it is a reflection-based extension on the abstract `ServiceAuthority`, activated during orchestration bootstrap. It scans the service abstraction’s assembly for types implementing `IEntityConfiguration`, applying model configuration declaratively and in isolation.
+Not a lifecycle hook, but a reflection-based extension activated during the creation phase. It applies model configuration declaratively, scoped to the service abstraction.
 
-Each configuration type defines declarative setup for a governed model—indexes, constraints, lifecycle flags, and audit scope. These configurations are scoped to the authority’s modeling surface and applied without entangling domain abstractions.
+Each configuration defines setup for a governed model—indexes, constraints, lifecycle flags, and audit scope. These are applied without entangling domain abstractions.
 
-This pattern avoids cyclic dependencies and preserves architectural separation. The service itself does not reference its abstraction directly. Configuration lives in the abstraction, and orchestration activates it externally.
+Mandates are applied after configuration, defining denial-first constraints that restrict external access to governed models.
 
-Once model configuration is complete, any known mandates can be applied to the Service Authority. These mandates define denial-first constraints that restrict what other authorities may do with the governed models. They are applied declaratively and scoped to the authority's orchestration boundary.
+---
 
 # **O**rchestration **D**ata **M**odel
 
@@ -128,4 +144,98 @@ It contains:
 * **Mandates**  \
   An optional collection of declarative constraints. These do not define models—they define what *other* authorities are denied from doing with models governed by this authority. Mandates are denial-first: they declare what is **not** allowed, using bitwise access masks to keep memory footprint lean.
 
-  
+## Durable vs Aliased Entities
+
+SubLight supports side-by-side modeling of entities that differ in orchestration authority:
+
+* **Durable Entity**  
+  A model governed by the current `ServiceAuthority`. It contains full schema fidelity, lifecycle flags, and mandate declarations. Configuration is applied via `IEntityConfiguration<TEntity>` and activated through `ApplyModelConfiguration`.
+
+* **Aliased Entity**  
+  A model governed by an external `ServiceAuthority`. Locally, it exists only to declare access intent. It does not participate in lifecycle configuration or mandate declaration. It is not configured via `IEntityConfiguration<TEntity>` and must not be activated through `ApplyModelConfiguration`.
+
+Aliased entities are orchestration-aware but not orchestration-owned. They act as semantic pointers to externally governed models, enabling contributors to declare access intent without duplicating configuration or violating domain boundaries.
+
+This pattern allows contributors to reason about shared models without entangling authority. It also enables CI validation to enforce that aliased entities are never configured locally. Any attempt to do so will result in an `InvalidOperationException` during orchestration validation.
+
+Aliased entities may also support **proxy resolution**—a mechanism by which orchestration systems can locate and interact with the authoritative service that governs the model. This resolution is environment-aware and may use the `Semantic Location` of the external authority to route requests, validate access, or hydrate data.
+
+This enables orchestration-aware services to treat aliased entities as cloud-resolvable references, without assuming ownership or configuration rights. It preserves domain boundaries while enabling distributed access semantics.
+
+> 🧭 **Aliased Entity Cache Behavior**  
+> SubLight may support cacheable behavior for aliased entities scoped to the consuming service. This allows orchestration to cache projections of externally governed models without violating domain ownership.  
+>  
+> When enabled, the cache key must include the consuming `ServiceAuthority` to ensure traceability and avoid collisions. The consuming authority must also declare cache awareness and own invalidation rights for its scoped entries.  
+>  
+> The cache remains external to the service—never in-memory. This ensures orchestration visibility, fast execution, and domain-respectful modeling.
+
+---
+
+## Ephemeral Entities
+
+SubLight supports a third modeling category alongside durable and aliased entities: the **Ephemeral Entity**.
+
+An Ephemeral Entity is orchestration-aware but not governed. It does not map directly to a schema and is not persisted in a durable store. Instead, it is projected from durable or aliased entities to express transient orchestration logic.
+
+Despite its transient nature, an Ephemeral Entity may be configured declaratively to express projection origin, lifecycle scope, and orchestration behavior—without entangling domain ownership.
+
+### Characteristics
+
+- **Projection-Based**: Composed from durable or aliased entities  
+- **No Schema Fidelity**: Not mapped to a backing schema  
+- **Configurable**: Declared via modeling contract, not runtime logic  
+- **Keyed**: Anchored to a durable source via a data key  
+- **Cacheable**: May be persisted in distributed cache  
+- **Orchestration-Scoped**: Exists only within orchestration context
+
+### Modeling Implications
+
+Ephemeral Entities share no schema with their durable counterparts. The only structural overlap is the data key, which anchors the ephemeral projection to its root durable source. This key enables cache addressability, proxy traversal, and audit traceability.
+
+> 🔁 **Cache Resolution**  
+> The data key anchors ephemeral entities to their durable origin. When cache is enabled, orchestration uses this key to resolve the projection from distributed cache. If valid, the cached object is used directly—avoiding recomputation from the durable store.
+
+> 🧠 **Contributor Insight**  
+> Ephemeral Entities in SubLight behave like AutoMapper projections in traditional EF Core systems. They are shaped from durable sources, keyed for traceability, and modeled for orchestration—not persistence.
+
+> 💡 **Performance Note**  
+> Some ephemeral projections may be expensive to compute. SubLight’s support for cacheable ephemeral entities allows contributors to persist transient results in distributed cache—reducing recomputation and improving orchestration performance.
+
+> ⚠️ **Contributor Warning**  
+> Ephemeral entities may be cacheable, but caching must occur at the orchestration layer—not within service internals. SubLight discourages runtime-layer caching of projections, as it obscures orchestration boundaries and undermines contributor clarity.
+
+> 🧭 **Cache Location Principle**  
+> SubLight services must remain lean and orchestration-focused. All cache behavior—whether for ephemeral or aliased entities—must be externalized. This ensures fast execution, clear modeling boundaries, and orchestration-aware cache resolution.  
+>  
+> Even when a consuming service caches an aliased projection, the cache must reside outside the service boundary. The `ServiceAuthority` must declare cache awareness and own invalidation rights for its scoped entries. The cache key must include the consuming authority’s identity to ensure isolation and traceability.  
+>  
+> Internal service caching is discouraged—even for performance-sensitive projections—as it obscures orchestration boundaries and undermines contributor clarity.
+
+---
+
+### Ephemeral Configuration Metadata
+
+Ephemeral entities may declare orchestration-aware configuration metadata to guide cache behavior and lifecycle scope. This metadata is not runtime logic—it is a modeling contract that informs orchestration systems how to treat the projection.
+
+#### Supported Modes
+
+| Mode | Description | Contributor Intent |
+|------|-------------|--------------------|
+| **Invalidation-Based** | Entity remains valid until explicitly invalidated by upstream change or domain trigger | Use when projections are stable but sensitive to source mutation |
+| **Timeout-Based** | Entity expires after a defined duration | Use when projections are cheap to recompute or time-sensitive |
+
+#### Configuration Surface
+
+Contributors may declare ephemeral configuration using modeling contracts—not runtime logic. This ensures orchestration visibility and avoids service-layer leakage.
+
+> ⚠️ **Note**  
+> SubLight does not support in-memory expiration logic. All timeout or invalidation behavior must be modeled for orchestration and resolved via distributed cache.
+
+> 🧾 **Cacheable Entities Must Declare Behavior**  
+> In SubLight, declaring an entity as cacheable is not a performance hint—it is a modeling contract. Contributors must define the expected cache behavior when marking an entity as cacheable. This includes:  
+>  
+> - **Expiration Strategy**: Whether the entity expires via timeout or remains valid until explicitly invalidated  
+> - **Invalidation Triggers**: What upstream changes or domain events cause the cache to be purged  
+> - **Scope and Visibility**: Whether the cache is session-scoped, domain-scoped, or globally distributed  
+>  
+> Cache behavior must be orchestration-aware and CI-validatable. Runtime-layer caching without declared behavior is discouraged and may result in orchestration diagnostics.
