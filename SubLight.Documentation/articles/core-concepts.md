@@ -252,9 +252,8 @@ Future optimization may include:
   * Tokenized navigation paths instead of full JSON expansions
   * Audit metadata streamed separately via telemetry sinks
 
-* **gRPC and Protobuf Transport** — Leveraging binary serialization and service contracts to reduce transport cost
-  * Expression tree segments may be passed to the steward
-  * Steward resolves the requested entity and returns it via gRPC
+* **HTTP/2 Transport** — Leveraging binary serialization to reduce transport cost  
+  * Steward resolves the requested entity and returns it via HTTP/2
   * Enables efficient, contract-driven orchestration with reduced payload size
 
 This speculative model would preserve declarative semantics while improving transport efficiency—especially for cacheable, telemetry-sensitive entities.
